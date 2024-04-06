@@ -1,0 +1,77 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "linc",
+	"scopeName": "source.linc",
+	"patterns": [
+		{"include": "#expression"}
+	],
+	"repository": {
+		"expression": {
+			"patterns": [{"include": "#directive"}, {"include": "#keyword"}, {"include": "#string"}, {"include": "#character"},
+				{"include": "#number"}, {"include": "#comment"}, {"include": "#operator"}, {"include": "#function_identifier"}]
+		},
+		"function_identifier": {
+			"patterns": [{
+				"match": "([A-Za-z_][A-Za-z0-9_]*)\\s*(?=\\()",
+				"captures": {
+					"1": {"name": "entity.name.function"}
+				}
+			}]
+		},
+		"operator": {
+			"patterns": [{
+				"name": "keyword.operator",
+				"match": "\\+|-|\\*|/|%|@|&|\\||!|=|>|<"
+			}]
+		},
+		"comment": {
+			"patterns": [{
+				"name": "comment.block.linc",
+				"match": "#.*"
+			}]
+		},
+		"number": {
+			"patterns": [
+			{
+				"name": "constant.numeric.linc",
+				"match": "(\\d+)|(\\d+\\.\\d*)|(\\d*\\.\\d+)"
+			},
+			{
+				"name": "storage.type",
+				"match": "(?<=(\\d+)|(\\d+\\.\\d*)|(\\d*\\.\\d+))((i|u)(8|16|32|64)|f32|f64|c|b|f|i|u)\\b"
+			}]
+		},
+		"directive": {
+			"name": "keyword.other",
+			"match": ";\\w+"
+		},
+		"keyword": {
+			"patterns": [{
+				"name": "keyword.control.linc",
+				"match": "\\b(as|type|if|else|while|for|in|finally|true|false|fn|ext|mut|return|jump|break|continue|((i|u)(8|16|32|64))|f32|f64|bool|char|void|string)\\b"
+			}]
+		},
+		"string": {
+			"name": "string.quoted.double.linc",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.linc",
+					"match": "\\\\."
+				}
+			]
+		},
+		"character": {
+			"name": "string.quoted.single",
+			"begin": "'",
+			"end": "'",
+			"patterns": [
+				{
+					"name": "constant.character.escape.linc",
+					"match": "\\\\."
+				}
+			]
+		}
+	}
+}

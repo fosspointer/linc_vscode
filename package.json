@@ -1,0 +1,50 @@
+{
+	"name": "linc",
+	"displayName": "Linc Language Support",
+	"description": "Syntax highlighting for Linc (Linc is Not C)",
+	"version": "0.6.1",
+	"engines": {
+		"vscode": "^1.85.0"
+	},
+	"icon": "icon.png",
+	"publisher": "fosspointer",
+	"repository": {
+		"url": "https://github.com/fosspointer/linc_vscode"
+	},
+	"categories": [
+		"Programming Languages"
+	],
+	"contributes": {
+		"languages": [
+			{
+				"id": "linc",
+				"aliases": [
+					"Linc",
+					"linc"
+				],
+				"extensions": [
+					".linc"
+				],
+				"configuration": "./language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "linc",
+				"scopeName": "source.linc",
+				"path": "./syntaxes/linc.tmLanguage.json"
+			}
+		]
+	},
+	"__metadata": {
+		"id": "ee89426b-e918-4e9d-a3e9-5b50d8478327",
+		"publisherId": "b1f7cae3-fa1a-4c3f-b53c-73e123d1f65a",
+		"publisherDisplayName": "fosspointer",
+		"targetPlatform": "undefined",
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"hasPreReleaseVersion": false,
+		"installedTimestamp": 1712436546710,
+		"pinned": false
+	}
+}
