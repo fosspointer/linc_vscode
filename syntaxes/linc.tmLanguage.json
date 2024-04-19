@@ -8,7 +8,20 @@
 	"repository": {
 		"expression": {
 			"patterns": [{"include": "#directive"}, {"include": "#keyword"}, {"include": "#string"}, {"include": "#character"},
-				{"include": "#number"}, {"include": "#comment"}, {"include": "#operator"}, {"include": "#function_identifier"}]
+				{"include": "#number"}, {"include": "#comment"}, {"include": "#operator"}, {"include": "#function_identifier"},
+				{"include": "#type_identifier"}, {"include": "#structure"}]
+		},
+		"structure": {
+			"patterns": [{
+				"name": "support.type",
+				"match": "\\b(?<=struct\\s+)[A-Za-z_][A-Za-z0-9_]*"
+			}]
+		},
+		"type_identifier": {
+			"patterns": [{
+				"name": "support.type",
+				"match": "\\b(?<=:\\s*)[A-Za-z_][A-Za-z0-9_]*\\b"
+			}]
 		},
 		"function_identifier": {
 			"patterns": [{
@@ -34,11 +47,11 @@
 			"patterns": [
 			{
 				"name": "constant.numeric.linc",
-				"match": "(\\d+)|(\\d+\\.\\d*)|(\\d*\\.\\d+)"
+				"match": "\\b(\\d+)|(\\d+\\.\\d*)|(\\d*\\.\\d+)\\b"
 			},
 			{
 				"name": "storage.type",
-				"match": "(?<=(\\d+)|(\\d+\\.\\d*)|(\\d*\\.\\d+))((i|u)(8|16|32|64)|f32|f64|c|b|f|i|u)\\b"
+				"match": "(?<=\\b(\\d+)|(\\d+\\.\\d*)|(\\d*\\.\\d+)\\b)((i|u)(8|16|32|64)|f32|f64|c|b|f|i|u)\\b"
 			}]
 		},
 		"directive": {
@@ -48,7 +61,7 @@
 		"keyword": {
 			"patterns": [{
 				"name": "keyword.control.linc",
-				"match": "\\b(as|type|if|else|while|for|in|finally|true|false|fn|ext|mut|return|jump|break|continue|((i|u)(8|16|32|64))|f32|f64|bool|char|void|string)\\b"
+				"match": "\\b(struct|as|type|if|else|while|for|in|finally|true|false|fn|ext|mut|return|jump|break|continue|((i|u)(8|16|32|64))|f32|f64|bool|char|void|string)\\b"
 			}]
 		},
 		"string": {
