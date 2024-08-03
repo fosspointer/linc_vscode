@@ -2,7 +2,7 @@
 	"name": "linc",
 	"displayName": "Linc Language Support",
 	"description": "Syntax highlighting for Linc (Linc is Not C)",
-	"version": "0.6.1",
+	"version": "0.6.2",
 	"engines": {
 		"vscode": "^1.85.0"
 	},
@@ -25,7 +25,11 @@
 				"extensions": [
 					".linc"
 				],
-				"configuration": "./language-configuration.json"
+				"configuration": "./language-configuration.json",
+				"icon": {
+					"light": "./icon.png",
+					"dark": "./icon.png"
+				}
 			}
 		],
 		"grammars": [
@@ -44,7 +48,9 @@
 		"updated": false,
 		"isPreReleaseVersion": false,
 		"hasPreReleaseVersion": false,
-		"installedTimestamp": 1712436546710,
-		"pinned": false
+		"installedTimestamp": 1722660167428,
+		"pinned": false,
+		"isApplicationScoped": false,
+		"source": "vsix"
 	}
 }

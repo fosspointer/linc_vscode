@@ -7,9 +7,9 @@
 	],
 	"repository": {
 		"expression": {
-			"patterns": [{"include": "#directive"}, {"include": "#keyword"}, {"include": "#string"}, {"include": "#character"},
-				{"include": "#number"}, {"include": "#comment"}, {"include": "#operator"}, {"include": "#function_identifier"},
-				{"include": "#type_identifier"}, {"include": "#structure"}]
+			"patterns": [{"include": "#directive"}, {"include": "#keyword"}, {"include": "#string"}, {"include": "#include_path"},
+				{"include": "#character"}, {"include": "#number"}, {"include": "#comment"}, {"include": "#operator"},
+				{"include": "#function_identifier"}, {"include": "#type_identifier"}, {"include": "#structure"}]
 		},
 		"structure": {
 			"patterns": [{
@@ -20,7 +20,7 @@
 		"type_identifier": {
 			"patterns": [{
 				"name": "support.type",
-				"match": "\\b(?<=:\\s*)[A-Za-z_][A-Za-z0-9_]*\\b"
+				"match": "\\b(?<=:\\s*(mut)?\\s*)[A-Za-z_][A-Za-z0-9_]*\\b"
 			}]
 		},
 		"function_identifier": {
@@ -40,23 +40,23 @@
 		"comment": {
 			"patterns": [{
 				"name": "comment.block.linc",
-				"match": "#.*"
+				"match": "//.*"
 			}]
 		},
 		"number": {
 			"patterns": [
 			{
 				"name": "constant.numeric.linc",
-				"match": "\\b(\\d+)|(\\d+\\.\\d*)|(\\d*\\.\\d+)\\b"
+				"match": "\\b((0x[A-F0-9]+)|(0b[01]+)|((0d)?(\\d+)|(\\d+\\.\\d*)|(\\d*\\.\\d+)))"
 			},
 			{
 				"name": "storage.type",
-				"match": "(?<=\\b(\\d+)|(\\d+\\.\\d*)|(\\d*\\.\\d+)\\b)((i|u)(8|16|32|64)|f32|f64|c|b|f|i|u)\\b"
+				"match": "(?<=\\b((0x[A-F0-9]+)|(0b[01]+)|((0d)?(\\d+)|(\\d+\\.\\d*)|(\\d*\\.\\d+))))((i|u)(8|16|32|64)|f32|f64|c|b|f|i|u)"
 			}]
 		},
 		"directive": {
 			"name": "keyword.other",
-			"match": ";\\w+"
+			"match": "#\\w+"
 		},
 		"keyword": {
 			"patterns": [{
@@ -74,6 +74,11 @@
 					"match": "\\\\."
 				}
 			]
+		},
+		"include_path": {
+			"name": "string.other",
+			"begin": "`",
+			"end": "`"
 		},
 		"character": {
 			"name": "string.quoted.single",
